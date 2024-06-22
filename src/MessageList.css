@@ -1,0 +1,59 @@
+/* Message List Styles */
+.message-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 600px; /* Hauteur maximale pour l'ascenseur, ajustez selon vos besoins */
+    overflow-y: auto; /* Ajoute un ascenseur vertical si nécessaire */
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alignement des messages à gauche */
+}
+
+.user-icon {
+    font-size: 24px; /* Taille de l'icône utilisateur */
+    margin-bottom: 5px; /* Espace en bas de l'icône */
+    color: #5a67d8; /* Couleur de l'icône utilisateur */
+}
+
+.user-name {
+    font-weight: bold; /* Police en gras pour le nom d'utilisateur */
+    color: #333; /* Couleur du texte du nom d'utilisateur */
+    text-align: center; /* Alignement du texte centré */
+}
+
+.message-content {
+    background-color: #5a67d8; /* Couleur de fond pour le contenu du message */
+    color: #fff; /* Couleur du texte */
+    border-radius: 15px; /* Coins arrondis */
+    padding: 12px 15px; /* Espacement intérieur */
+    line-height: 1.4; /* Hauteur de ligne */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    width: auto; /* Ajustement automatique de la largeur */
+    max-width: 80%; /* Largeur maximale */
+}
+
+.message-content p {
+    margin: 0; /* Suppression des marges par défaut */
+    font-size: 1em; /* Taille de police */
+    word-wrap: break-word; /* Gestion des mots longs */
+}
+
+.message.received .message-content {
+    background-color: #f0f0f0; /* Couleur de fond différente pour les messages reçus */
+    color: #333; /* Couleur de texte pour les messages reçus */
+}
+
+.message .meta-info {
+    font-size: 0.8em; /* Taille de police plus petite pour les métadonnées */
+    color: #888; /* Couleur de texte grise pour les métadonnées */
+    margin-top: 5px; /* Espacement au-dessus des métadonnées */
+}
+
+.message .meta-info span {
+    margin-left: 10px; /* Espacement entre les éléments de métadonnées */
+}
+
