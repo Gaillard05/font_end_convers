@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import MessageList from './MessageList';
-import '../../node_modules/font-awesome/css/font-awesome.min.css'; 
+import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import '../ChatRoom.css';
 
 const ChatRoom = ({ username, onLogout }) => {
     const [messages, setMessages] = useState([]);
     const [userList, setUserList] = useState([]);
     const [messageInput, setMessageInput] = useState('');
+    const [targetUser, setTargetUser] = useState(null);
     const ws = useRef(null);
 
     useEffect(() => {
@@ -53,6 +54,7 @@ const ChatRoom = ({ username, onLogout }) => {
             alert('Please enter a message.');
             return;
         }
+
         try {
             const response = await fetch('http://localhost:9005/api/send-message', {
                 method: 'POST',
@@ -70,6 +72,12 @@ const ChatRoom = ({ username, onLogout }) => {
         }
     };
 
+    const handleUserClick = (user) => {
+        if (user !== username) {
+            setTargetUser(user);
+        }
+    };
+
     return (
         <div className="chat-room">
             <div className="chat-header">
@@ -82,7 +90,7 @@ const ChatRoom = ({ username, onLogout }) => {
                     <div className="inbox_chat">
                         <ul>
                             {userList.map((user, index) => (
-                                <li key={index} className="chat_list">
+                                <li key={index} className="chat_list" onClick={() => handleUserClick(user)}>
                                     <i className="fa fa-user-circle-o user-icon" aria-hidden="true"></i>
                                     <span className="user-name">{user}</span>
                                 </li>
